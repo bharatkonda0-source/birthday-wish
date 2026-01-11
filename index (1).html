@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Birthday Program</title>
+<style>
+body {
+    background-color: #0d1117; /* Dark background */
+    color: #c9d1d9; /* Default text color */
+    font-family: "JetBrains Mono", monospace;
+    padding: 30px;
+    font-size: 20px; /* Bigger font */
+}
+#code {
+    white-space: pre-line;
+    line-height: 1.6;
+}
+
+/* Colors for code keywords, strings, comments */
+.comment { color: #8b949e; }
+.keyword { color: #ff7b72; }
+.string  { color: #a5d6ff; }
+.name    { color: #7ee787; }
+.func    { color: #d2a8ff; }
+</style>
+</head>
+<body>
+
+<pre id="code"></pre>
+
+<script>
+const text = `
+# Birthday_Wish.py
+# Compiled successfully
+
+def birthday_wish():
+    name = "Shivathmika"
+    mood = "Happy"
+    stress = None
+    vibes = "Positive"
+
+    print("Happy Birthday Shivathmika!")
+    print("May your cake be bigger than your problems.")
+    print("May life avoid unnecessary bugs.")
+    print("And may good days load faster than bad ones.")
+
+birthday_wish()
+`;
+
+let i = 0;
+const speed = 60;
+const codeElement = document.getElementById("code");
+
+/* Soft keyboard typing sound */
+const typingSound = new Audio(
+  "https://assets.mixkit.co/sfx/preview/mixkit-soft-keyboard-typing-2517.mp3"
+);
+typingSound.volume = 0.15;
+
+function typeWriter() {
+    if (i < text.length) {
+        codeElement.textContent += text.charAt(i);
+        if (text.charAt(i) !== "\n") {
+            typingSound.currentTime = 0;
+            typingSound.play();
+        }
+        i++;
+        setTimeout(typeWriter, speed);
+    }
+}
+
+typeWriter();
+</script>
+
+</body>
+</html>
